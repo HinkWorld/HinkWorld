@@ -9,9 +9,19 @@
     <h1>Välkommen Rishinkskrigare 🍚🪣👊!</h1>
     <h1>Idag är det: <span id="dayTypeTitle"></span></h1>
     
+    <!-- Bild som randomiseras -->
+    <img id="knightImage" src="" alt="Riddare tränar med rishink" width="500">
+    
     <p id="dayType"></p>
     
     <script>
+        // Randomisera riddarbild
+        const images = [
+            'knight1.png', 'knight2.png', 'knight3.png', // Lägg till alla 30 bilder här
+        ];
+        const randomIndex = Math.floor(Math.random() * images.length);
+        document.getElementById('knightImage').src = images[randomIndex];
+
         const today = new Date();
         const day = today.getDate();
         const month = today.getMonth() + 1;
