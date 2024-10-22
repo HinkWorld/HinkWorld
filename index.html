@@ -6,7 +6,7 @@
     <title>Tränings- och mätningsdagar</title>
 </head>
 <body>
-    <h1>Välkommen Rishinks-krigare!</h1>
+    <h1>Välkommen Rishinkskrigare 🍚🪣👊!</h1>
     <h1>Idag är det: <span id="dayTypeTitle"></span></h1>
     
     <p id="dayType"></p>
@@ -31,13 +31,13 @@
         // Kontrollera om dagen matchar både träning och mätning
         if (trainingIndex > 0 && measurementIndex > 0) {
             titleMessage = 'Både träning och mätning';
-            message = `Detta är träning nr ${trainingIndex} av 14 och mätning nr ${measurementIndex} av 16.<br><br>Kämpa på!`;
+            message = `Detta är träning nr ${trainingIndex} av 14 och mätning nr ${measurementIndex} av 16.<br><br>Kämpa på! 🔥`;
         } else if (trainingIndex > 0) {
             titleMessage = 'Träning';
-            message = `Detta är träning nr ${trainingIndex} av 14 träningstillfällen.<br><br>Kämpa på!`;
+            message = `Detta är träning nr ${trainingIndex} av 14 träningstillfällen.<br><br>Kämpa på! 🔥`;
         } else if (measurementIndex > 0) {
             titleMessage = 'Mätning';
-            message = `Detta är mätning nr ${measurementIndex} av sammanlagt 16 mätningstillfällen.<br><br>Kämpa på!`;
+            message = `Detta är mätning nr ${measurementIndex} av sammanlagt 16 mätningstillfällen.<br><br>Kämpa på! 🔥`;
         } else {
             titleMessage = 'Ingen träning eller mätning idag';
         }
