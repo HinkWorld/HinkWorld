@@ -6,15 +6,34 @@
     <title>Tränings- och mätningsdagar</title>
 </head>
 <body>
-    <h1>Välkommen Rishinkskrigare 🍚🪣👊</h1>
+    <h1>Välkommen Rishinkskrigare 🍚🪣👊!</h1>
     <h1>Idag är det: <span id="dayTypeTitle"></span></h1>
     
-    <!-- Bild som randomiseras (just nu bara knight1.png) -->
-    <img id="knightImage" src="images/knight1.png" alt="Riddare tränar med rishink" width="500">
+    <!-- Bild som randomiseras -->
+    <img id="knightImage" src="" alt="Riddare tränar med rishink" width="500">
     
     <p id="dayType"></p>
     
     <script>
+        // Randomisera bland de 13 bilderna
+        const images = [
+            'images/knight1.png', 
+            'images/knight2.png', 
+            'images/knight3.png', 
+            'images/knight4.png', 
+            'images/knight5.png', 
+            'images/knight6.png', 
+            'images/knight7.png', 
+            'images/knight8.png', 
+            'images/knight9.png', 
+            'images/knight10.png', 
+            'images/knight11.png', 
+            'images/knight12.png', 
+            'images/knight13.png'
+        ];
+        const randomIndex = Math.floor(Math.random() * images.length);
+        document.getElementById('knightImage').src = images[randomIndex];
+
         const today = new Date();
         const day = today.getDate();
         const month = today.getMonth() + 1;
