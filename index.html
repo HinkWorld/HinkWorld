@@ -6,7 +6,7 @@
     <title>Tränings- och mätningsdagar</title>
 </head>
 <body>
-    <h1>Idag är det: </h1>
+    <h1>Idag är det:</h1>
     <p id="dayType"></p>
     
     <script>
@@ -14,18 +14,29 @@
         const day = today.getDate();
         const month = today.getMonth() + 1;
 
-        const trainingDays = ['21/10', '23/10', '25/10', '27/10'];
-        const measurementDays = ['22/10', '24/10', '26/10'];
+        // Tränings- och mätningstillfällen (i rätt ordning)
+        const trainingDays = ['21/10', '23/10', '25/10', '27/10', '29/10', '31/10', '2/11', '4/11', '6/11', '8/11', '10/11', '12/11', '14/11', '16/11'];
+        const measurementDays = ['14/10', '16/10', '18/10', '20/10', '22/10', '24/10', '26/10', '28/10', '1/11', '4/11', '8/11', '11/11', '13/11', '15/11', '17/11', '19/11'];
 
         const todayFormatted = `${day}/${month}`;
+        let message = '';
 
-        if (trainingDays.includes(todayFormatted)) {
-            document.getElementById('dayType').textContent = 'Träning';
-        } else if (measurementDays.includes(todayFormatted)) {
-            document.getElementById('dayType').textContent = 'Mätning';
+        // Hitta dagens position i listan (om det är träning eller mätning)
+        const trainingIndex = trainingDays.indexOf(todayFormatted) + 1;
+        const measurementIndex = measurementDays.indexOf(todayFormatted) + 1;
+
+        // Kontrollera om dagen matchar både träning och mätning
+        if (trainingIndex > 0 && measurementIndex > 0) {
+            message = `Både träning och mätning. Detta är träning nr ${trainingIndex} av 14 och mätning nr ${measurementIndex} av 16. Kämpa på!`;
+        } else if (trainingIndex > 0) {
+            message = `Träning. Detta är träning nr ${trainingIndex} av 14 träningstillfällen. Kämpa på!`;
+        } else if (measurementIndex > 0) {
+            message = `Mätning. Detta är mätning nr ${measurementIndex} av sammanlagt 16 mätningstillfällen. Kämpa på!`;
         } else {
-            document.getElementById('dayType').textContent = 'Ingen träning eller mätning idag';
+            message = 'Ingen träning eller mätning idag';
         }
+
+        document.getElementById('dayType').textContent = message;
     </script>
 </body>
 </html>
