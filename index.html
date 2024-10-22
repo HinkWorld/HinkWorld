@@ -27,16 +27,16 @@
 
         // Kontrollera om dagen matchar både träning och mätning
         if (trainingIndex > 0 && measurementIndex > 0) {
-            message = `Både träning och mätning. Detta är träning nr ${trainingIndex} av 14 och mätning nr ${measurementIndex} av 16. Kämpa på!`;
+            message = `<b>Både träning och mätning</b><br>Detta är träning nr ${trainingIndex} av 14 och mätning nr ${measurementIndex} av 16.<br>Kämpa på!`;
         } else if (trainingIndex > 0) {
-            message = `Träning. Detta är träning nr ${trainingIndex} av 14 träningstillfällen. Kämpa på!`;
+            message = `<b>Träning</b><br>Detta är träning nr ${trainingIndex} av 14 träningstillfällen.<br>Kämpa på!`;
         } else if (measurementIndex > 0) {
-            message = `Mätning. Detta är mätning nr ${measurementIndex} av sammanlagt 16 mätningstillfällen. Kämpa på!`;
+            message = `<b>Mätning</b><br>Detta är mätning nr ${measurementIndex} av sammanlagt 16 mätningstillfällen.<br>Kämpa på!`;
         } else {
             message = 'Ingen träning eller mätning idag';
         }
 
-        document.getElementById('dayType').textContent = message;
+        document.getElementById('dayType').innerHTML = message;
     </script>
 </body>
 </html>
