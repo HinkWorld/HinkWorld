@@ -9,14 +9,14 @@
     <h1>Välkommen Rishinkskrigare 🍚🪣👊!</h1>
     <h1>Idag är det: <span id="dayTypeTitle"></span></h1>
     
-    <!-- Bild som randomiseras -->
-    <img id="knightImage" src="" alt="Riddare tränar med rishink" width="500">
+    <!-- Bild som visas beroende på dagtyp -->
+    <img id="knightImage" src="" alt="Riddare tränar eller vilar med rishink" width="500">
     
     <p id="dayType"></p>
     
     <script>
-        // Randomisera bland 13 riddarbilder
-        const images = [
+        // Bilder för Rishinksdagar
+        const trainingImages = [
             'images/knight1.png', 
             'images/knight2.png', 
             'images/knight3.png', 
@@ -31,14 +31,21 @@
             'images/knight12.png', 
             'images/knight13.png'
         ];
-        const randomIndex = Math.floor(Math.random() * images.length);
-        document.getElementById('knightImage').src = images[randomIndex];
+
+        // Bilder för Vilodagar
+        const restImages = [
+            'rest_images/vilodag1.png', 
+            'rest_images/vilodag2.png', 
+            'rest_images/vilodag3.png', 
+            'rest_images/vilodag4.png', 
+            'rest_images/vilodag5.png'
+        ];
 
         const today = new Date();
         const day = today.getDate();
         const month = today.getMonth() + 1;
 
-        // Definiera Rishinksdagar baserat på senaste listan
+        // Definiera Rishinksdagar
         const rishinksDays = [
             "28/10", "1/11", 
             "4/11", "6/11", "8/11", 
@@ -50,13 +57,21 @@
         let titleMessage = '';
         let message = '';
 
-        // Kolla om det är en Rishinksdag eller vilodag
+        // Kolla om det är en Rishinksdag eller vilodag och välj bild därefter
         if (rishinksDays.includes(todayFormatted)) {
             titleMessage = "Rishinksdag";
-            message = `Idag är det en Rishinksdag! Träning och mätning gäller för de flesta datum, men vissa är endast träning eller slutmätning.`;
+            message = "Idag är det en Rishinksdag! Träning och mätning gäller för de flesta datum.";
+            
+            // Välj en slumpmässig bild för Rishinksdagar
+            const randomTrainingImage = trainingImages[Math.floor(Math.random() * trainingImages.length)];
+            document.getElementById('knightImage').src = randomTrainingImage;
         } else {
             titleMessage = "Vilodag";
             message = "Ingen träning eller mätning idag. Vila och ladda upp!";
+            
+            // Välj en slumpmässig bild för Vilodagar
+            const randomRestImage = restImages[Math.floor(Math.random() * restImages.length)];
+            document.getElementById('knightImage').src = randomRestImage;
         }
 
         document.getElementById('dayTypeTitle').textContent = titleMessage;
