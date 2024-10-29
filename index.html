@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tränings- och mätningsdagar</title>
+    <title>Rishinksdagar och Vilodagar</title>
 </head>
 <body>
-    <h1>Välkommen Rishinkskrigare!</h1>
+    <h1>Välkommen Rishinkskrigare 🍚🪣👊!</h1>
     <h1>Idag är det: <span id="dayTypeTitle"></span></h1>
     
     <!-- Bild som randomiseras -->
@@ -15,7 +15,7 @@
     <p id="dayType"></p>
     
     <script>
-        // Randomisera bland de 13 bilderna
+        // Randomisera bland 13 riddarbilder
         const images = [
             'images/knight1.png', 
             'images/knight2.png', 
@@ -38,30 +38,25 @@
         const day = today.getDate();
         const month = today.getMonth() + 1;
 
-        // Tränings- och mätningstillfällen (i rätt ordning)
-        const trainingDays = ['21/10', '23/10', '25/10', '27/10', '29/10', '31/10', '2/11', '4/11', '6/11', '8/11', '10/11', '12/11', '14/11', '16/11'];
-        const measurementDays = ['14/10', '16/10', '18/10', '20/10', '22/10', '24/10', '26/10', '28/10', '1/11', '4/11', '8/11', '11/11', '13/11', '15/11', '17/11', '19/11'];
+        // Definiera Rishinksdagar baserat på senaste listan
+        const rishinksDays = [
+            "28/10", "1/11", 
+            "4/11", "6/11", "8/11", 
+            "11/11", "13/11", "15/11", "17/11", 
+            "19/11"
+        ];
 
         const todayFormatted = `${day}/${month}`;
-        let message = '';
         let titleMessage = '';
+        let message = '';
 
-        // Hitta dagens position i listan (om det är träning eller mätning)
-        const trainingIndex = trainingDays.indexOf(todayFormatted) + 1;
-        const measurementIndex = measurementDays.indexOf(todayFormatted) + 1;
-
-        // Kontrollera om dagen matchar både träning och mätning
-        if (trainingIndex > 0 && measurementIndex > 0) {
-            titleMessage = 'Både träning och mätning';
-            message = `Detta är träning nr ${trainingIndex} av 14 och mätning nr ${measurementIndex} av 16.<br><br>Kämpa på! 🔥`;
-        } else if (trainingIndex > 0) {
-            titleMessage = 'Träning';
-            message = `Detta är träning nr ${trainingIndex} av 14 träningstillfällen.<br><br>Kämpa på! 🔥`;
-        } else if (measurementIndex > 0) {
-            titleMessage = 'Mätning';
-            message = `Detta är mätning nr ${measurementIndex} av sammanlagt 16 mätningstillfällen.<br><br>Kämpa på! 🔥`;
+        // Kolla om det är en Rishinksdag eller vilodag
+        if (rishinksDays.includes(todayFormatted)) {
+            titleMessage = "Rishinksdag";
+            message = `Idag är det en Rishinksdag! Träning och mätning gäller för de flesta datum, men vissa är endast träning eller slutmätning.`;
         } else {
-            titleMessage = 'Ingen träning eller mätning idag';
+            titleMessage = "Vilodag";
+            message = "Ingen träning eller mätning idag. Vila och ladda upp!";
         }
 
         document.getElementById('dayTypeTitle').textContent = titleMessage;
